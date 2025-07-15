@@ -1,8 +1,8 @@
-import * as PIXI from 'pixi.js';
-import IdleScene from './scenes/idle';
-import GameScene from './scenes/game';
+import {Application} from 'pixi.js';
+import { SceneManager } from './sceneManager';
+import { AssetLoader } from './assetLoader';
 
-const app = new PIXI.Application();
+const app = new Application();
 await app.init({
   resizeTo: window,
   backgroundColor: 0x111111,
@@ -10,9 +10,8 @@ await app.init({
 
 document.body.appendChild(app.canvas);
 
-const idleScene = new IdleScene();
-app.stage.addChild(idleScene);
+await AssetLoader.loadAssets();
 
-const gameScene = new GameScene();
-app.stage.addChild(gameScene);
-gameScene.visible = false;
+const sceneManager = new SceneManager(app);
+
+sceneManager.init();
