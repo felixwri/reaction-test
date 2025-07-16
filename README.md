@@ -1,44 +1,30 @@
 # Reaction Game in PixiJS
 
-## Getting Started
+## Running the project
 
 ```bash
 npm i
 npm run dev
 ```
 
-## Overview
+## To add
 
-Build a reaction test game using PixiJS and TypeScript. The game should look and feel like part of a competitive socialising experience rather than a flash game. This should take 2–4 hours to complete, depending on how polished you make it. Please don't go overboard, I'm just looking to see your code quality and ability to work with PixiJS.
+#### Design
 
-I have provided a starting point project folder, you do not have to use it nor do you need to stick to the approach I have laid out.
+* More GSAP animations
+* Replace Graphics with Sprites
+* Add persistent storage for good times
 
-## Game Requirements
+#### Technical
 
-### Idle Screen
-- Displays game title/logo
-- Shows a "Tap to Start" message
-- Transitions into the play screen on interaction
+* Better router type annotation \
+  Relys on casting but could be improved to be explicit
+* Bitmap text
 
-### Play Screen
-- After a random delay, signal the player to tap/click as fast as possible
-- Measure the reaction time in milliseconds
-- Show visual feedback if the player clicks too early
+## Notes
 
-### Results Screen
-- Display the player's reaction time
-- Bonus points for storing scores and/or displaying a rank
-- Return to idle screen after timeout and/or tap
+Encounted a bug? where a tint of #000000 is treated as a invalid value istead of black
+by the PixiJS GSAP plugin
 
-## Technical Requirements
-
-- Use PixiJS v8.x.x
-- Written in TypeScript
-- Bonus points for using GSAP to animate
-
-## Deliverables
-
-- A link to your GitHub repo with the full project
-- A short README explaining:
-  - How to run/build the project
-  - Anything you'd add with more time
+The font is RacingSans from Google Fonts
+  

@@ -47,6 +47,14 @@ export class Leaderboard extends Container {
         this.addChild(this._scoreContainer);
     }
 
+    /**
+     * Creates a score card
+     * Consists of a background, name and score text
+     *
+     * @param name
+     * @param score
+     * @returns Container with the score card
+     */
     private createScoreCard(name: string, score: number) {
         const scoreCard = new Container();
         const background = new Graphics();
@@ -83,6 +91,9 @@ export class Leaderboard extends Container {
         return scoreCard;
     }
 
+    /**
+     * Sets the position of every score card
+     */
     private recalculatePositions() {
         for (let i = 0; i < this._scores.length; i++) {
             this._scores[i].element.position.set(

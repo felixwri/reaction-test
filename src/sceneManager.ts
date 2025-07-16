@@ -1,10 +1,10 @@
-import { Application } from "pixi.js";
-import IdleScene from "./scenes/idle";
-import GameScene from "./scenes/game";
-import { BaseScene } from "./scenes/baseScene";
-import ResultsScene from "./scenes/results";
-import { SceneRouter } from "./components/sceneRouter";
-import { Routes } from "./constants/routes";
+import { Application } from 'pixi.js';
+import IdleScene from './scenes/idle';
+import GameScene from './scenes/game';
+import { BaseScene } from './scenes/baseScene';
+import ResultsScene from './scenes/results';
+import { SceneRouter } from './components/sceneRouter';
+import { Routes } from './constants/routes';
 
 export class SceneManager {
     private _idleScene: BaseScene;
@@ -20,15 +20,16 @@ export class SceneManager {
 
         this._router = new SceneRouter();
 
-        app.stage.addChild(this._idleScene);
+        app.stage.addChild(this._resultsScene);
+        this._resultsScene.visible = false;
 
         app.stage.addChild(this._gameScene);
         this._gameScene.visible = false;
-        app.stage.addChild(this._resultsScene);
-        this._resultsScene.visible = false;
+
+        app.stage.addChild(this._idleScene);
     }
 
-    init() {
+    public init() {
         this._router.add(Routes.idle, () => {
             this._idleScene.start();
         });

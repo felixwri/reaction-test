@@ -5,7 +5,7 @@ import { Colors } from '../constants/colors';
 import { TextInput } from '../components/textInput';
 import { Button } from '../components/button';
 import { Leaderboard } from '../components/leaderboard';
-import { Relative } from '../components/layout';
+import { Relative } from '../utils/layout';
 
 export default class ResultsScene extends BaseScene {
     protected _background: PIXI.Graphics;
@@ -36,6 +36,11 @@ export default class ResultsScene extends BaseScene {
         this.visible = true;
         this._reactionTime = data.reactionTime;
         this._results.text = `${this._reactionTime} ms`;
+
+        // Exit after 20 seconds
+        setTimeout(() => {
+            this.end();
+        }, 30 * 1000);
     }
 
     public end() {
@@ -49,7 +54,7 @@ export default class ResultsScene extends BaseScene {
     protected init() {
         console.log('Result scene initialized');
         this._background = new PIXI.Graphics();
-        this._background.rect(0, 0, Relative.width(1), Relative.height(1)).fill(Colors.black);
+        this._background.rect(0, 0, Relative.width(1), Relative.height(1)).fill(Colors.darkGray);
         this.addChild(this._background);
 
         this._prompt = new PIXI.Text({

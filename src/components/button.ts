@@ -1,5 +1,5 @@
-import { Color, Container, Graphics, Text, TextStyle } from "pixi.js";
-import { Colors } from "../constants/colors";
+import { Color, Container, Graphics, Text, TextStyle } from 'pixi.js';
+import { Colors } from '../constants/colors';
 
 type ButtonOptions = {
     width?: number;
@@ -13,7 +13,6 @@ export class Button extends Container {
     private _background: Graphics;
     private _options: ButtonOptions;
     private _onClick: () => void;
-
 
     constructor(label: string, onClick: () => void, options?: ButtonOptions) {
         super();
@@ -44,7 +43,7 @@ export class Button extends Container {
         this._background.on('pointerleave', () => {
             this.updateGraphics(false);
         });
-        
+
         this.addChild(this._background);
         const text = new Text({
             text: this._label,
@@ -52,7 +51,7 @@ export class Button extends Container {
                 fontFamily: 'RacingSans',
                 fontSize: 24,
                 fill: '#ffffff',
-                align: 'center'
+                align: 'center',
             }),
         });
 
@@ -69,5 +68,4 @@ export class Button extends Container {
         this._background.roundRect(0, 0, this._options.width, this._options.height, 10);
         this._background.fill(hover ? this._options.hoverColor : this._options.fillColor);
     }
-    
 }
