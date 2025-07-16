@@ -12,18 +12,18 @@ npm run dev
 #### Design
 
 * More GSAP animations
-* Replace Graphics with Sprites
+* Replace some Graphics with Sprites
 * Add persistent storage for good times
 
 #### Technical
 
 * Better router type annotation \
-  Relys on casting but could be improved to be explicit
-* Bitmap text
+  It currently relys on casting but could be improved to be explicit
+* Switch to bitmap text for the stopwatch since it's updated every frame
 
 ## Notes
 
-Encounted a bug? where a tint of #000000 is treated as a invalid value istead of black
+Encounted a bug? where a tint of #000000 is treated as a invalid value instead of black
 by the PixiJS GSAP plugin
 
 The font is RacingSans from Google Fonts
