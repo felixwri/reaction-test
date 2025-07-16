@@ -1,8 +1,10 @@
 import * as PIXI from 'pixi.js';
 import { BaseScene } from './baseScene';
 import { Routes } from '../constants/routes';
+import { Relative } from '../components/layout';
+import { Colors } from '../constants/colors';
 
-export default class IdleScene extends BaseScene{
+export default class IdleScene extends BaseScene {
     protected _background: PIXI.Graphics;
     protected _title: PIXI.Text;
     protected _prompt: PIXI.Text;
@@ -12,7 +14,7 @@ export default class IdleScene extends BaseScene{
         super();
         this.init();
     }
-    
+
     public start() {
         this.visible = true;
     }
@@ -30,7 +32,7 @@ export default class IdleScene extends BaseScene{
         this._background.on('pointertap', () => {
             this.end();
         });
-        this._background.rect(0, 0, window.innerWidth, window.innerHeight).fill(0xff9933);
+        this._background.rect(0, 0, Relative.width(1), Relative.height(1)).fill(Colors.orange);
         this.addChild(this._background);
 
         this._title = new PIXI.Text({
@@ -40,10 +42,10 @@ export default class IdleScene extends BaseScene{
                 fontSize: 100,
                 fill: '#ffffff',
                 align: 'center',
-            })
+            }),
         });
         this._title.anchor.set(0.5);
-        this._title.position.set(window.innerWidth / 2, window.innerHeight / 2);
+        this._title.position = Relative.set(0.5, 0.5);
         this.addChild(this._title);
 
         this._prompt = new PIXI.Text({
@@ -52,11 +54,11 @@ export default class IdleScene extends BaseScene{
                 fontFamily: 'sans-serif',
                 fontSize: 50,
                 fill: '#ffffff',
-                align: 'center'
-            })
+                align: 'center',
+            }),
         });
         this._prompt.anchor.set(0.5);
-        this._prompt.position.set(window.innerWidth / 2, window.innerHeight / 2 + 100);
+        this._prompt.position = Relative.set(0.5, 0.6);
         this.addChild(this._prompt);
     }
 }

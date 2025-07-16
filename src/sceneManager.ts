@@ -39,8 +39,8 @@ export class SceneManager {
             this._resultsScene.start(reactionTime);
         });
 
-        this._idleScene.setRouter(this._router);
-        this._gameScene.setRouter(this._router);
-        this._resultsScene.setRouter(this._router);
+        this._idleScene.router = this._router;
+        this._gameScene.router = this._router;
+        this._resultsScene.router = this._router;
     }
 }

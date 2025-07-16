@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js';
 import { BaseScene } from './baseScene';
 import { Routes } from '../constants/routes';
+import { Colors } from '../constants/colors';
 
 export default class GameScene extends BaseScene {
     protected _background: PIXI.Graphics;
@@ -45,6 +46,8 @@ export default class GameScene extends BaseScene {
             return;
         }
 
+        this._timerStarted = false;
+
         const reactionTime = Date.now() - this._startTime;
 
         this.visible = false;
@@ -64,7 +67,7 @@ export default class GameScene extends BaseScene {
         this._background.on('pointertap', () => {
             this.end();
         });
-        this._background.rect(0, 0, window.innerWidth, window.innerHeight).fill(0xffcc00);
+        this._background.rect(0, 0, window.innerWidth, window.innerHeight).fill(Colors.black);
         this.addChild(this._background);
 
         this._prompt = new PIXI.Text({
@@ -83,6 +86,7 @@ export default class GameScene extends BaseScene {
         this._timer = new PIXI.Text({
             text: '00:00.000',
             style: new PIXI.TextStyle({
+                fontFamily: 'RacingSans',
                 fontSize: 50,
                 fill: '#ffffff',
                 align: 'center'
