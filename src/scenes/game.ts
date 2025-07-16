@@ -59,7 +59,8 @@ export default class GameScene extends BaseScene {
             this.start();
             return;
         }
-
+        const reactionTime = Date.now() - this._startTime;
+        this._timer.text = `${Math.floor(reactionTime / 1000)}:${String(reactionTime % 1000).padStart(3, '0')} ms`;
         this._ticker.stop();
 
         this._timeline = gsap.timeline({ delay: 0.5 });
@@ -79,7 +80,7 @@ export default class GameScene extends BaseScene {
                 ease: 'power2.inOut',
                 onComplete: () => {
                     this.reset();
-                    const reactionTime = Date.now() - this._startTime;
+
                     this._router.to(Routes.results, { reactionTime });
                 },
             }

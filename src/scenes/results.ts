@@ -15,6 +15,7 @@ export default class ResultsScene extends BaseScene {
     protected _input: TextInput;
     protected _retryButton: Button;
 
+    private _timeoutId: number | null = null;
     private _reactionTime: number;
 
     constructor(
@@ -38,12 +39,17 @@ export default class ResultsScene extends BaseScene {
         this._results.text = `${this._reactionTime} ms`;
 
         // Exit after 20 seconds
-        setTimeout(() => {
+        this._timeoutId = setTimeout(() => {
             this.end();
         }, 30 * 1000);
     }
 
     public end() {
+        if (this._timeoutId) {
+            clearTimeout(this._timeoutId);
+            this._timeoutId = null;
+        }
+
         this._router.to(Routes.idle);
         this.visible = false;
 
